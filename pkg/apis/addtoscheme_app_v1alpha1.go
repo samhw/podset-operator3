@@ -1,7 +1,7 @@
 package apis
 
 import (
-	"github.com/samhw/pkg/apis/app/v1alpha1"
+	"github.com/samhw/podset-operator3/pkg/apis/app/v1alpha1"
 )
 
 func init() {
