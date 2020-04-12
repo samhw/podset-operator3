@@ -4,11 +4,11 @@ import (
     "context"
     "reflect"
 
-    appv1alpha1 "github.com/redhat/podset-operator/pkg/apis/app/v1alpha1"
+    appv1alpha1 "github.com/samhw/podset-operator3/pkg/apis/app/v1alpha1"
     corev1 "k8s.io/api/core/v1"
     "k8s.io/apimachinery/pkg/api/errors"
     metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-    "k8s.io/apimachinery/pkg/labels"
+//    "k8s.io/apimachinery/pkg/labels"
     "k8s.io/apimachinery/pkg/runtime"
     "sigs.k8s.io/controller-runtime/pkg/client"
     "sigs.k8s.io/controller-runtime/pkg/controller"
@@ -102,15 +102,17 @@ func (r *ReconcilePodSet) Reconcile(request reconcile.Request) (reconcile.Result
 
     // List all pods owned by this PodSet instance
     podList := &corev1.PodList{}
-    lbs := map[string]string{
-        "app":     podSet.Name,
-        "version": "v0.1",
-    }
-    labelSelector := labels.SelectorFromSet(lbs)
-    listOps := &client.ListOptions{Namespace: podSet.Namespace, LabelSelector: labelSelector}
-    if err = r.client.List(context.TODO(), listOps, podList); err != nil {
-        return reconcile.Result{}, err
-    }
+    //lbs := map[string]string{
+    //    "app":     podSet.Name,
+    //    "version": "v0.1",
+   // }
+    //labelSelector := labels.SelectorFromSet(lbs)
+    //sng.fixme
+    //listOps := &client.ListOptions{Namespace: podSet.Namespace, LabelSelector: labelSelector}
+    //if err = r.client.List(context.TODO(), listOps, podList); err != nil {
+//    if err = r.client.List(podList, context.TODO(), listOps); err != nil {
+  //      return reconcile.Result{}, err
+   // }
 
     // Count the pods that are pending or running as available
     var available []corev1.Pod
